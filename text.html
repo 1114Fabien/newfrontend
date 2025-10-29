@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>What Year Is It?</title>
+</head>
+<body>
+  <h1>L'année actuelle est : <span id="year">...</span></h1>
+
+  <script>
+    // URL de ton backend (à adapter si nécessaire)
+    const backendUrl = 'http://localhost:3000/year';
+
+    fetch(backendUrl)
+      .then(response => response.json())
+      .then(data => {
+        // afficher l'année dans l'élément avec l'id "year"
+        document.getElementById('year').textContent = data.year;
+      })
+      .catch(err => {
+        console.error('Erreur lors de la récupération de l’année :', err);
+        document.getElementById('year').textContent = 'Erreur';
+      });
+  </script>
+</body>
+</html>
